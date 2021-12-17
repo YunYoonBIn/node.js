@@ -2,8 +2,9 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
 const port = 8080;
-
 app.use(bodyParser.urlencoded({ extended: true }));
+app.set('view engine', 'ejs');
+app.engine('ejs', require('ejs').__express)
 
 var db;
 
@@ -26,6 +27,17 @@ app.get('/', (req, res) => {
 app.get('/write', (req, res) => {
     res.sendFile(__dirname + "/write.html");
 });
+
+
+app.get('/list', (req, res) => {
+    db.collection('post').find().toArray((err, client) => {
+        if (err) return console.log(err);
+
+        console.log(client)
+        res.render('list.ejs', { posts: client })
+    });
+
+})
 
 app.post('/newpost', (req, res) => {
     res.send("전송완료")
