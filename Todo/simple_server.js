@@ -21,11 +21,11 @@ MongoClient.connect('mongodb+srv://yubiny289:dbqls0417@cluster0.dsbtf.mongodb.ne
 
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + "/index.html");
+    res.render("index.ejs");
 });
 
 app.get('/write', (req, res) => {
-    res.sendFile(__dirname + "/write.html");
+    res.render("write.ejs");
 });
 
 
