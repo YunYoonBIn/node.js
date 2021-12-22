@@ -17,14 +17,15 @@
 
     <%- include('nav.html') %>
 
-        <form style="padding: 2%;" action="/newpost" method="post">
+        <form style="padding: 2%;" action="/edit?_method=PUT" method="post">
             <div class="form-group">
                 <label for="exampleInputEmail1">할일</label>
-                <input type="text" class="form-control" name="title">
+                <input type="text" value="<%= post._id %>" name="id" style="display: none;">
+                <input value="<%= post.제목 %>" type="text" class="form-control" name="title">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Due date</label>
-                <input type="text" class="form-control" name="date">
+                <input value="<%= post.날짜 %>" type="text" class="form-control" name="date">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

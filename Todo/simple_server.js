@@ -2,9 +2,13 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
 const port = 8080;
+const methodOverride = require('method-override')
+app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.engine('ejs', require('ejs').__express)
+app.use('/public', express.static('public'));
+
 
 var db;
 
@@ -68,3 +72,32 @@ app.delete('/delete', (req, res) => {
     })
 })
 
+app.get('/detail/:id', (req, res) => {
+    db.collection('post').findOne({ _id: parseInt(req.params.id) }, (err, client) => {
+
+        if (client) {
+            res.render('detail.ejs', { data: client })
+        } else {
+            console.log(err);
+            res.send("요청하신 페이지는 없는 페이지 입니다.")
+        }
+    })
+})
+
+app.get('/edit/:id', (req, res) => {
+    db.collection('post').findOne(parseInt({ _id: req.params.id }), (err, client) => {
+        if (client) {
+            res.render('edit.ejs', { post: client })
+        } else {
+            console.log(err)
+            res.send('요청하신 페이지는 없는 페이지 입니다.')
+        }
+    })
+})
+
+app.put('/edit', (req, res) => {
+    db.collection('post').updateOne({ _id: parseInt(req.body.id) }, { $set: { 제목: req.body.title, 날짜: req.body.date } }, (err, client) => {
+        console.log("수정완료")
+        res.redirect('/list')
+    })
+})
