@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+a {
+    color: black;
+}
+
+
+
+:root {
+    
+   /* fontSize */
+   --font-large: 30px;
+   --font-medium: 22px;
+   --font-small: 16px;
+   --font-micro: 12px;
+
+   /* textColor */
+   
+}
+
+/* HEADER */
+
+.navber {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    margin: 18px;
+}
+
+.title {
+    font-size: var(--font-large);
+}
+
+.navber_menu{
+    display: flex;
+    list-style: none;
+}
+
+.navber_menu li {
+    margin-left: 40px;
+    font-size: var(--font-medium);
+}
+
+.navber_icon {
+    display: flex ;
+}
+
+.navber_icon img {
+    width: 20%;
+}
+
+.navber_icon ul li {
+    
+}
