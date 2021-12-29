@@ -1,13 +1,23 @@
-const { Router } = require('express');
-const express = require('express')
-const app = express()
-const port = 8080
+const express = require('express');
+const app = express();
+const port = 8080;
+const mysql = require('mysql');
+const path = require('path');
+const session = require('express-session');
+const crypto = require('crypto');
+const FileStore = require('session-file-store')(session);
+const cookieParser = require('cookie-parser');
 
-app.use(express.json());
-
-app.post('/register', (req, res, next) => {
-    console.log(res.body)
-    res.end()
+const db = mysql.createConnection({
+    user: 'root',
+    password: 'dbqls0417!#',
+    database: 'dbs',
+    host: 'localhost'
 })
+
+db.connect();
+
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+
 
