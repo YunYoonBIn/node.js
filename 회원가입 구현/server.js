@@ -12,7 +12,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
 app.use(express.static(path.join(__dirname, "/public")));
-app.set('views', __dirname + '\\views');
+app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -100,7 +100,7 @@ app.post('/register', (req, res) => {
 
 app.get('/login', (req, res) => {
     console.log('로그인 작동');
-    res.render('login');
+    res.render('login.ejs');
 });
 
 app.post('/login', (req, res) => {
@@ -109,7 +109,8 @@ app.post('/login', (req, res) => {
     const pw = body.pw;
 
     db.query('select * from userdata where id=?', [id], (err, data) => {
-        if (id == data[0].id || pw == data[0].pw) {
+
+        if (id == data[0].id && pw == data[0].pw) {
             console.log('로그인 성공');
 
             req.session.is_logined = true;

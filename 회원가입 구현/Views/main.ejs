@@ -10,27 +10,8 @@
 </head>
 
 <body>
-    <nav>
-        <div class="cont">
-            <div class="title">
-                <a href="/">메인페이지</a>
-            </div>
-            <div class="menu_bar">
-                <ul>
-                    <% if(is_logined==false){ %>
-                        <li><a href="/login">login</a></li>
-                        <li><a href="/register">register</a></li>
-                        <% }else{ %>
-                            <li>
-                                <%= name %> 님 환영합니다!
-                            </li>
-                            <li><a href="/logout">logout</a></li>
-                            <% } %>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
+    <%- include('nav.ejs') %>
 
 </body>
 

@@ -10,50 +10,38 @@
 </head>
 
 <body>
-    <nav>
-        <div class="cont">
-            <div class="title">
-                <a href="/">메인페이지</a>
-            </div>
-            <div class="menu_bar">
-                <ul>
 
-                    <li><a href="/login">login</a></li>
-                    <li><a href="/register">register</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
-    <section>
-        <div class="container_form">
-            <form method="post">
-                <ul>
-                    <li>
-                        <label>아이디</label>
-                        <input type="text" name='id' required>
-                    </li>
-                    <li>
-                        <label>비밀번호</label>
-                        <input type="password" name="pw" required>
-                    </li>
-                    <li>
-                        <label>이름</label>
-                        <input type="text" name="name" required>
-                    </li>
-                    <li>
-                        <label>나이</label>
-                        <input type="number" name="age" required>
-                    </li>
-                    <li>
-                        <libel>이메일</libel>
-                        <input type="email" name="email" required>
-                    </li>
-                </ul>
-                <input type="submit" value="회원가입">
-            </form>
-        </div>
-    </section>
+    <%- include('nav.ejs') %>
+        <section>
+            <div class="container_form">
+                <form method="post">
+                    <ul>
+                        <li>
+                            <label>아이디</label>
+                            <input type="text" name='id' required>
+                        </li>
+                        <li>
+                            <label>비밀번호</label>
+                            <input type="password" name="pw" required>
+                        </li>
+                        <li>
+                            <label>이름</label>
+                            <input type="text" name="name" required>
+                        </li>
+                        <li>
+                            <label>나이</label>
+                            <input type="number" name="age" required>
+                        </li>
+                        <li>
+                            <libel>이메일</libel>
+                            <input type="email" name="email" required>
+                        </li>
+                    </ul>
+                    <input type="submit" value="회원가입">
+                </form>
+            </div>
+        </section>
 </body>
 
 </html>
